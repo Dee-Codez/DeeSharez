@@ -10,7 +10,6 @@ const Login = () => {
 const responseGoogle = (response) => {
   if (response.credential != null) {
     const USER_CREDENTIAL = jwtDecode(response.credential);
-    console.log(USER_CREDENTIAL);
     localStorage.setItem('user',JSON.stringify(USER_CREDENTIAL));
 
     const {name, sub, picture} = USER_CREDENTIAL;
@@ -35,6 +34,7 @@ const responseGoogle = (response) => {
         <div className='absolute flex flex-col justify-center items-center top-0 bottom-0 left-0 right-0'>
           <p className='text-2xl p-4'>
             DeeSharez
+            
           </p>
           <div className='shadow-2xl'>
             <GoogleLogin
