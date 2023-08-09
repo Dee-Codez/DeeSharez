@@ -13,6 +13,7 @@ const Feed = () => {
   useEffect(() => {
     setLoading(true);
     if(categoryId){
+      setLoading(true);
       const query = searchQuery(categoryId);
 
       client.fetch(query)
@@ -22,6 +23,7 @@ const Feed = () => {
           setLoading(false);
         })
     }else{ 
+      setLoading(true);
       client.fetch(feedQuery)
       .then((data) => {
         setPins(data);
@@ -29,14 +31,15 @@ const Feed = () => {
       })
 
     }
-  }, [])
+  }, [categoryId])
   
-
+  let catName = categoryId || 'new';
+  catName= catName.charAt(0).toUpperCase() + catName.slice(1).toLowerCase();
   if (loading) {
-    return <Spinner message="We are adding new ideas!" />
+    return <Spinner message={`We are adding ${catName} ideas to your feed!`} />
   }
 
-  if(!pins?.length) return <h2>No Pins Available</h2>
+  if(!pins?.length) return <h2>{`No ${catName} Pins Available`}</h2>
 
   return (
     <div>

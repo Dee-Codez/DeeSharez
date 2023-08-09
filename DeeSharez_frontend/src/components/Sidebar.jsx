@@ -11,7 +11,7 @@ const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-2 bo
 import { categories } from '../utils/data'
 
 const Sidebar = ({user, closeToggle}) => {
-  const handleCloseSidebar = () => {
+  const handleCloseSidebar = (event) => {
     if(closeToggle){
       closeToggle(false);
     }
@@ -40,6 +40,7 @@ const Sidebar = ({user, closeToggle}) => {
           </h3>
           {categories.slice(0, categories.length - 1).map((category) =>(
             <NavLink
+              tag={Link}
               to={`/category/${category.name}`}
               className={({isActive}) => isActive ? isActiveStyle : isNotActiveStyle}
               onClick={handleCloseSidebar}
@@ -52,7 +53,7 @@ const Sidebar = ({user, closeToggle}) => {
         </div>
       </div>
       {user && (
-        <Link forceRefresh to={`/user-profile/${user._id}`} 
+        <Link to={`/user-profile/${user._id}`} 
         className="flex my-5 mb-2 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
         onClick={handleCloseSidebar}
         >
