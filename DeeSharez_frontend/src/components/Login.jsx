@@ -50,6 +50,7 @@ const responseGoogle = (response) => {
             )}
             onSuccess={responseGoogle}
             onError={responseGoogle}
+            useOneTap
           />
           </div>
         </div>
