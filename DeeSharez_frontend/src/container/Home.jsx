@@ -25,6 +25,7 @@ const Home = () => {
       .then((data) => {
         setUser(data[0]);
       })
+      const luserId = user?._id;
   },[]);
   
   useEffect(() => {
@@ -58,7 +59,7 @@ const Home = () => {
       
       <div className='pb-2 flex-1 h-screen overflow-y-scroll' ref={scrollRef}>
         <Routes>
-          <Route path='/user-profile/:userId' element={<UserProfile/>} />
+          <Route path='/user-profile/:userId' element={<UserProfile luser={user?._id}/>} />
           <Route path="/*" element={<Pins user={user && user} />} />
         </Routes>
       </div>

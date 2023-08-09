@@ -183,6 +183,7 @@ export const categories = [
         image
       },
       save[]{
+        _key,
         postedBy->{
           _id,
           userName,

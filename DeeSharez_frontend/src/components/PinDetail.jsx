@@ -27,7 +27,9 @@ const PinDetail = ({user}) => {
           if(data[0]){
             query = pinDetailMorePinQuery(data[0]);
             client.fetch(query)
-              .then((res) => setPins(res));
+              .then((res) => {
+                setPins(res);
+              });
           }
         })
     }
@@ -93,7 +95,7 @@ const PinDetail = ({user}) => {
           </h1>
           <p className='mt-3'>{pinDetail.about}</p>
         </div>
-        <Link to={`user-profile/${pinDetail.postedBy?._id}`} className='flex gap-2 mt-5 items-center bg-white rounded-lg'>
+        <Link to={`/user-profile/${pinDetail.postedBy?._id}`} className='flex gap-2 mt-5 items-center bg-white rounded-lg'>
           <img src={pinDetail.postedBy?.image} className='w-8 h-8 rounded-full object-cover' alt="user-profile" />
           <p className='font-semibold capitalize'>{pinDetail.postedBy?.userName}</p>
         </Link>
@@ -101,11 +103,13 @@ const PinDetail = ({user}) => {
         <div className='max-h-370 overflow-y-auto'>
           {pinDetail?.comments?.map((comment, i) => (
             <div className='flex gap-2 mt-5 items-center bg-white rounded-lg' key={i}>
+              <Link to={`/user-profile/${comment.postedBy?._id}`}>
               <img 
                 src={comment.postedBy.image} 
                 alt="user-profile"
                 className='w-10 h-10 rounded-full cursor-pointer'
                 />
+              </Link>
                 <div className='flex flex-col'>
                   <p className='font-bold'>{comment.postedBy.userName}</p>
                   <p>{comment.comment}</p>
@@ -114,8 +118,8 @@ const PinDetail = ({user}) => {
           ))}
         </div>
         <div className='flex flex-wrap mt-6 gap-3'>
-        <Link to={`user-profile/${pinDetail.postedBy?._id}`}>
-          <img src={pinDetail.postedBy.image} className='w-10 h-10 rounded-full cursor-pointer' alt="user-profile" />
+        <Link to={`/user-profile/${user?._id}`}>
+          <img src={user?.image} className='w-10 h-10 rounded-full cursor-pointer' alt="user-profile" />
         </Link>
         <input 
           type="text"

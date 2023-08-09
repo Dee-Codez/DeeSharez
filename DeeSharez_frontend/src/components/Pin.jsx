@@ -16,7 +16,7 @@ const Pin = ({pin: {postedBy, image, _id, destination ,save}}) => {
   const user = fetchUser();
   const navigate = useNavigate();
 
-  const alreadySaved = !!(save?.filter((item) => item.postedBy._id === user.sub))?.length; //double inv as the filter func return array of matches thus conver the length [0,1] into boolean
+  const alreadySaved = !!(save?.filter((item) => item.postedBy._id === user?.sub))?.length; //double inv as the filter func return array of matches thus conver the length [0,1] into boolean
 
   console.log();
 
@@ -109,7 +109,7 @@ const Pin = ({pin: {postedBy, image, _id, destination ,save}}) => {
                 {destination.length > 15 ? `${destination.slice(0,15)}..` : destination}
               </a>
             )}
-            {postedBy?._id === user.sub && (
+            {postedBy?._id === user?.sub && (
               <button 
                 type='button'
                 onClick={(e) => {
