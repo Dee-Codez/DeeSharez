@@ -1,7 +1,10 @@
 import React from 'react'
-import { NavLink,Link } from 'react-router-dom'
+import { NavLink,Link, useNavigate } from 'react-router-dom'
 import { IoIosArrowForward } from 'react-icons/io'
 import {RiHome2Fill} from 'react-icons/ri'
+import { googleLogout } from '@react-oauth/google'
+import { AiOutlineLogout } from 'react-icons/ai'
+
 
 import logo from '../assets/logo.png'
 
@@ -11,6 +14,15 @@ const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-2 bo
 import { categories } from '../utils/data'
 
 const Sidebar = ({user, closeToggle}) => {
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    googleLogout();
+    localStorage.clear();
+    navigate('/login');
+  }
+
   const handleCloseSidebar = (event) => {
     if(closeToggle){
       closeToggle(false);
@@ -53,15 +65,26 @@ const Sidebar = ({user, closeToggle}) => {
         </div>
       </div>
       {user && (
-        <Link to={`/user-profile/${user._id}`} 
-        className="flex my-5 mb-2 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
-        onClick={handleCloseSidebar}
+        <>
+        <div
+        className="flex justify-center my-5 mb-2 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
         >
+          <Link to={`/user-profile/${user._id}`}
+          className='flex flex-row justify-center items-center gap-2'
+          onClick={handleCloseSidebar}>
           <img src={user.image} className='w-10 h-10 rounded-full' alt="user/profile" />
           <p className='font-bold'>{user.userName}</p>
-          
-        </Link>
-
+          </Link>
+          <button
+          type='button'
+          className='bg-red-500 text-white p-2 rounded-full cursor-pointer outline-none shadow-md z-50'
+          onClick={logout}
+          >
+          <AiOutlineLogout fontSize={20} />
+        </button>
+        </div>
+        
+        </>
       )}
     </div>
   )

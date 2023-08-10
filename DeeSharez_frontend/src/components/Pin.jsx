@@ -53,7 +53,7 @@ const Pin = ({pin: {postedBy, image, _id, destination ,save}}) => {
 
 
   return (
-    <div className='m-2 bg-white rounded-lg hover:scale-105 transition-all duration-500 ease-in-out pb-2 hover:shadow-2xl' >
+    <div className='m-2 bg-white rounded-lg hover:scale-105 transition-all duration-500 ease-in-out pb-2 hover:shadow-2xl mb-5 hover:mt-5' >
       <div
         onMouseEnter={() => setPostHovered(true)}
         onMouseLeave={() => setPostHovered(false)}
@@ -68,7 +68,7 @@ const Pin = ({pin: {postedBy, image, _id, destination ,save}}) => {
         style = {{height: '100%'}}  
         >
           <div className='flex items-center justify-between'>
-            <div className='flex gap-2'>
+            <div className='flex gap-4'>
               <a 
                 href={`${image?.asset?.url}?dl=`}
                 download

@@ -68,7 +68,8 @@ const UserProfile = ({luser}) => {
           <div className='flex flex-col justify-center items-center'>
             <img 
               src={randomImage} 
-              className='w-full h-370 xl:h-510 shadow-lg object-cover z-1 blur-[2px]'
+              className='w-full h-370 xl:h-310 shadow-lg object-cover z-1 blur-[2px]'
+              style={{height: '300px'}}
               alt="banner-pic"
             />
             <img 
