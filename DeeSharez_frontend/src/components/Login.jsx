@@ -4,6 +4,8 @@ import jwtDecode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 import {FcGoogle} from 'react-icons/fc'
 import {client} from '../client'
+import logo from '../assets/DeeSharez-White.png'
+
 
 const Login = () => {
   const navigate =useNavigate();
@@ -32,10 +34,8 @@ const responseGoogle = (response) => {
     <div className='flex justify-start items-center flex-col h-screen'>
       <div className='relative w-full h-full bg-zinc-950 text-white'>
         <div className='absolute flex flex-col justify-center items-center top-0 bottom-0 left-0 right-0'>
-          <p className='text-2xl p-4'>
-            DeeSharez
-            
-          </p>
+          {/* <p className='text-2xl p-4'>DeeSharez</p> */}
+          <img src={logo} alt="DeeSharez" style={{height: '240px'}} className=' h-70 mb-10' />
           <div className='shadow-2xl'>
             <GoogleLogin
             render={(renderProps) => (
