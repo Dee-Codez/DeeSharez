@@ -4,7 +4,7 @@ import {AiFillCloseCircle} from 'react-icons/ai';
 import {Link, Route, Routes} from 'react-router-dom';
 import logo from '../assets/logo.png';
 
-import {Sidebar, UserProfile} from '../components';
+import {Sidebar, UserProfile, LoginPopup} from '../components';
 import Pins from './Pins';
 import { userQuery } from '../utils/data';
 import {client} from '../client';
@@ -33,7 +33,11 @@ const Home = () => {
   },[])
 
   return (
-    <div className='flex bg-gray-50 md:flex-row flex-col h-screen transition-height duration-75 ease-out'>
+    <>
+    {/* {!user && (
+      <LoginPopup />
+    )} */}
+    <div className='flex bg-gray-50 md:flex-row flex-col w-full h-screen transition-height duration-75 ease-out'>
       <div className='hidden md:flex h-screen flex-initial'>
         <Sidebar user={user && user}/>
       </div>
@@ -64,6 +68,7 @@ const Home = () => {
         </Routes>
       </div>
     </div>
+    </>
   )
 }
 

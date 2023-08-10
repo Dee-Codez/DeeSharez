@@ -3,14 +3,21 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwtDecode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 import {FcGoogle} from 'react-icons/fc'
+import { AiOutlineArrowRight } from 'react-icons/ai';
 import {client} from '../client'
 import logo from '../assets/DeeSharez-White.png'
 
 
 const Login = () => {
-  const navigate =useNavigate();
+  const navigate = useNavigate();
+
+  const skip = () => {
+    navigate('/',{replace: true})
+  }
+
 const responseGoogle = (response) => {
-  if (response.credential != null) {
+
+  if (response.credential != null ) {
     const USER_CREDENTIAL = jwtDecode(response.credential);
     localStorage.setItem('user',JSON.stringify(USER_CREDENTIAL));
 
@@ -52,6 +59,15 @@ const responseGoogle = (response) => {
             onError={responseGoogle}
             useOneTap
           />
+          </div>
+          <div className='mt-10 bg-red-700 rounded-lg p-2 text-white flex flex-col justify-center items-center '>
+            <button
+              type='button'
+              onClick={skip}
+              className='flex flex-row gap-2 justify-center items-center'
+            >
+              Continue As Guest <AiOutlineArrowRight />
+            </button>
           </div>
         </div>
       </div>

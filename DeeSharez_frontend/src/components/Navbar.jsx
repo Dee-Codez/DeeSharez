@@ -5,7 +5,6 @@ import { MdLogin } from 'react-icons/md';
 
 
 const Navbar = ({ searchTerm, setsearchTerm, user}) => {
-  console.log(user);
   const navigate = useNavigate();
   return (
     <div className='flex gap-2 md:gap-5 w-full mt-5 pb-7'>
